@@ -20,7 +20,11 @@ bot.catch((err, ctx) => {
 })
 
 bot.start(onStart)
-bot.help((ctx) => ctx.reply("MESSAGES.HELP"))
+bot.help((ctx) => ctx.reply(
+`I can forward messages to your Notion inbox, but only if you took my code and set it up yourself 🤷
+You can ask questions at @m0rtyn
+My code is on GitHub: https://github.com/m0rtyn/telegram-bot-quick-add-to-notion`
+))
 
 bot.on("callback_query", (ctx) => {
   switch (ctx.callbackQuery?.data) {

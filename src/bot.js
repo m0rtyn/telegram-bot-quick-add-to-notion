@@ -1,5 +1,5 @@
 import axios from "axios"
-import { Context, Telegraf } from "telegraf"
+import { Telegraf } from "telegraf"
 import {
   WEBHOOK_URL,
   BOT_TOKEN

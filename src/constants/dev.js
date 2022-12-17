@@ -2,7 +2,7 @@ import { TELEGRAM_BOT_URL } from "./bot.js"
 
 export const NGROK_URL = process.env.NGROK_URL
 
-export const WEB_APP_URL = process.env.NGROK_URL
+export const WEB_APP_URL = process.env.RAILWAY_URL
 // export const WEB_APP_URL =
 //   process.env.NODE_ENV === "development" ? NGROK_URL : RENDER_URL
 

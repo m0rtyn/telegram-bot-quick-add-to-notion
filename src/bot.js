@@ -1,9 +1,11 @@
 import axios from "axios"
-import { Telegraf } from "telegraf"
+import { Telegraf, Markup } from "telegraf"
 import {
   WEBHOOK_URL,
-  BOT_TOKEN
+  BOT_TOKEN,
+  Answers,
 } from "./constants/index.js"
+import { isUsernameExists } from "./db.js"
 
 export const dialogState= {}
 
@@ -15,16 +17,18 @@ export async function onStart(ctx) {
   const username = ctx.message?.from.username
   if (!username) throw new Error("No username found")
 
-    // const keyboard = Markup.keyboard([
-    //   Markup.button.callback(Answers.ADD_CHAPTER, "add_chapter"),
-    //   Markup.button.callback(Answers.HANDBOOK, 'handbook'),
-    //   Markup.button.callback(Answers.TABLE, 'table'),
-    // ]).resize()
-    
-    return await ctx.reply(
-      `Hello, ${username}`,
-      // keyboard
-    )
+  if (isUsernameExists(username)) {
+    return await ctx.reply(`Hi, ${username}. You already connect a Notion database.`)
+  }
+
+  const keyboard = Markup.keyboard([
+    Markup.button.callback(Answers.ADD_TOKEN, "add_token"),
+  ]).resize()
+  
+  return await ctx.reply(
+    `Hello, ${username}`,
+    keyboard
+  )
 }
 
 export async function setWebhook() {

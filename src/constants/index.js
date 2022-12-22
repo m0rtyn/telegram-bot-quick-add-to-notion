@@ -7,4 +7,5 @@ export const {
   HELP_TEXT,
   BOT_TOKEN,
   TELEGRAM_BOT_URL,
+  Answers,
 } = bot
